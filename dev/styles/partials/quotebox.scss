@@ -1,0 +1,21 @@
+.quoteBox {
+    display: flex;
+    width: 90%;
+    background: white;
+    border: 1px solid black;
+    border-radius: 1.25em;
+    flex-wrap: wrap;
+    color: black;
+    justify-content: center;
+    padding: 5px;
+
+.imgContainer {
+    width: 80%;
+}
+
+.subtitle {
+    width: 100%;
+    text-align: center;
+}
+
+}

@@ -1,0 +1,35 @@
+@import "partials/setup.scss";
+@import "partials/form.scss";
+@import "partials/quotebox.scss";
+
+body {
+    font-family: 'Gloria Hallelujah', cursive;
+    color: yellow;
+    background-color: #87CEEB;
+    background: url(../background.jpg) no-repeat center center fixed;
+    background-size: cover;
+    text-shadow: 1px 1px 2px black;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+main {
+    width: 100%;
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1170px;
+    margin: 0 auto;
+    justify-content: center;
+}

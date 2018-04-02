@@ -1,0 +1,32 @@
+form {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+
+    h4 {
+        width: 100%;
+    }
+
+    input[type="submit"] {
+            width: 200px;
+            height: 35px;
+            border: 1px solid black;
+            transition: 0.5s all;
+             outline: none;
+             border-radius: 4px;
+            &:hover {
+                color: yellow;
+                background: white;
+                text-shadow: 1px 1px 2px black;
+            }
+
+            input[type="search"] {
+            width: 35%;
+            height: 35px;
+            border: 1px solid black;
+            transition: 0.5s all;
+             outline: none;
+             border-radius: 4px;
+}
+
+}}
