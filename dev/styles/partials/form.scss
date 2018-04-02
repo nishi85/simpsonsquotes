@@ -5,6 +5,7 @@ form {
 
     h4 {
         width: 100%;
+        @include remCalc(20);
     }
 
     input[type="submit"] {

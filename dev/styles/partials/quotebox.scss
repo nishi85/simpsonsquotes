@@ -19,6 +19,7 @@
 .subtitle {
     width: 100%;
     text-align: center;
+    @include remCalc(20);
 }
 
 }
