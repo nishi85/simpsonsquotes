@@ -1,6 +1,6 @@
 .quoteBox {
     display: flex;
-    width: 90%;
+    width: 85%;
     background: white;
     border: 1px solid black;
     border-radius: 1.25em;
@@ -20,6 +20,9 @@
     width: 100%;
     text-align: center;
     @include remCalc(20);
+    p {
+        margin: 10px auto;
+    }
 }
 
 }

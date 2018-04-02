@@ -1,14 +1,13 @@
+const simpson = {};
 
-$(function() {
-  $('.quoteBox').hide();
 //get input from search field
- function querySearch() {
+ simpson.querySearch = () => {
     let query = $('input[type=search]').val();
-    getQuote(query);
+    simpson.getQuote(query);
 }
 
 //search input in the API. Had to use proxy.
-  function getQuote(query) {
+  simpson.getQuote = (query) => {
   $.ajax({
     url: `https://cors-anywhere.herokuapp.com/https://frinkiac.com/api/search?q=${query}`,
     dataType: "json",
@@ -42,8 +41,6 @@ else {
    <p>Season ${res.Episode.Season} Episode #${res.Episode.EpisodeNumber}</p>
    <p>Originally Aired On ${res.Episode.OriginalAirDate}</p>
    <a href="${res.Episode.WikiLink}" target="_blank">More Info</a>
-   
-   
    `);
    res.Subtitles.forEach(function(subtitle) {
      console.log(subtitle.Content);
@@ -54,11 +51,22 @@ else {
   });
 }; 
 
+
+simpson.init = () => {
+ $(".quoteBox").hide();
+
+}
+
+
+
+$(function() {
+
+  simpson.init();
   
   $('form').on("submit", function(e){
       $(".quoteBox").show();
       e.preventDefault();
-      querySearch();
+      simpson.querySearch();
       });
 
 });
