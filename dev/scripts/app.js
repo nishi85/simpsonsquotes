@@ -54,14 +54,12 @@ searchForm.addEventListener('submit', e => {
   e.preventDefault();
   //get search term
   const searchTerm = searchInput.value;
-  console.log(searchTerm);
 
   //show quotebox 
   document.getElementById("quoteBox").classList.add('quoteBoxFX');
 
   //clear search field
   searchInput.value = '';
-  console.log(123);
 
   //clear div where subtitles are shown
   document.getElementById("subTtl").innerHTML ='';
