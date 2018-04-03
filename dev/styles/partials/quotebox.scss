@@ -1,8 +1,8 @@
-.quoteBox {
+#quoteBox {
     display: flex;
     width: 85%;
-    background: white;
-    border: 1px solid black;
+    // background: white;
+    // border: 1px solid black;
     border-radius: 1.25em;
     flex-wrap: wrap;
     color: black;
@@ -10,7 +10,7 @@
     padding: 5px;
     text-shadow: none;
     margin: 5px;
-    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    // box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 
 .imgContainer {
     width: 80%;
@@ -24,5 +24,13 @@
         margin: 10px auto;
     }
 }
+
+}
+
+.quoteBoxFX {
+
+background: white;
+border: 1px solid black;
+box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 
 }

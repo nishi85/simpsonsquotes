@@ -163,27 +163,29 @@ form {
       outline: none;
       border-radius: 4px; }
 
-.quoteBox {
+#quoteBox {
   display: flex;
   width: 85%;
-  background: white;
-  border: 1px solid black;
   border-radius: 1.25em;
   flex-wrap: wrap;
   color: black;
   justify-content: center;
   padding: 5px;
   text-shadow: none;
-  margin: 5px;
-  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5); }
-  .quoteBox .imgContainer {
+  margin: 5px; }
+  #quoteBox .imgContainer {
     width: 80%; }
-  .quoteBox .subtitle {
+  #quoteBox .subtitle {
     width: 100%;
     text-align: center;
     font-size: 1.25rem; }
-    .quoteBox .subtitle p {
+    #quoteBox .subtitle p {
       margin: 10px auto; }
+
+.quoteBoxFX {
+  background: white;
+  border: 1px solid black;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5); }
 
 body {
   font-family: 'Gloria Hallelujah', cursive;

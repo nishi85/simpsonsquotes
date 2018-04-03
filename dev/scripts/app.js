@@ -1,73 +1,70 @@
-const simpson = {};
+import axios from "axios";
 
-//get input from search field
- simpson.querySearch = () => {
-    let query = $('input[type=search]').val();
-    simpson.getQuote(query);
-}
+//search function
 
-//search input in the API. Had to use proxy.
-  simpson.getQuote = (query) => {
-  $.ajax({
-    url: `https://cors-anywhere.herokuapp.com/https://frinkiac.com/api/search?q=${query}`,
-    dataType: "json",
-    method: "GET"
+const getQuote = (query) => {
+  axios({
+    method: "get",
+    url:
+      `https://cors-anywhere.herokuapp.com/https://frinkiac.com/api/search?q=${query}`,
+    responseType: "json"
+  }).then(res => {
+            console.log(res.data);
+//error checking if 0 results
+ if (res.data.length === 0) {
+
+document.getElementById("imgCtn").innerHTML = `<img src="./public/td.jpg" alt="Kent Brockman technical difficulties">
+  <h3>0 Results Found. Please Search Another Term.</h3>`;
+    }
+ 
+else {
+
+    let episode = res.data[0].Episode;
+    let timestamp = res.data[0].Timestamp;
+    document.getElementById("imgCtn").innerHTML = `<img src="https://frinkiac.com/meme/${episode}/${timestamp}" alt="">`;
+
+axios({
+    method: "get",
+    url:`https://cors-anywhere.herokuapp.com/https://frinkiac.com/api/caption?e=${episode}&t=${timestamp}`,
+    responseType: "json"
   }).then(res => {
     console.log(res);
-//if no results found    
-if (res.length === 0) {
-  $(".imgContainer").html("");
-   $(".subtitle").html("");
-   $(".info").html("");
-   $(".imgContainer").append(`
-           <img src="./public/td.jpg" alt="Kent Brockman technical difficulties">
-            <h3>0 Results Found. Please Search Another Term.</h3>`);
-}
-else {
-    let episode = res[0].Episode;
-    let timestamp = res[0].Timestamp;
-     $(".imgContainer").html("");
-     $(".imgContainer").append(`
-           <img src="https://frinkiac.com/meme/${episode}/${timestamp}" alt="">`);
- $.ajax({
-   url: `https://cors-anywhere.herokuapp.com/https://frinkiac.com/api/caption?e=${episode}&t=${timestamp}`,
-   dataType: "json",
-   method: "GET"
- }).then(res => {
-   console.log(res);
-   $(".subtitle").html("");
-    $(".info").html("");
-   $(".info").append(`<p>From: ${res.Episode.Title}</p>
-   <p>Season ${res.Episode.Season} Episode #${res.Episode.EpisodeNumber}</p>
-   <p>Originally Aired On ${res.Episode.OriginalAirDate}</p>
-   <a href="${res.Episode.WikiLink}" target="_blank">More Info</a>
-   `);
-   res.Subtitles.forEach(function(subtitle) {
+    res.data.Subtitles.forEach(subtitle => {
      console.log(subtitle.Content);
-     $(".subtitle").append(`<p>-${subtitle.Content}</p>`);
+     document.getElementById("subTtl").innerHTML += `<p>-${subtitle.Content}</p>`;
    });
- }); 
+
+   document.getElementById("infoBox").innerHTML = `<p>From: ${res.data.Episode.Title}</p>
+  <p>Season ${res.data.Episode.Season} Episode #${res.data.Episode.EpisodeNumber}</p>
+  <p>Originally Aired On ${res.data.Episode.OriginalAirDate}</p>
+  <a href="${res.data.Episode.WikiLink}" target="_blank">More Info</a>`;
+  })
+
 }
   });
-}; 
-
-
-simpson.init = () => {
- $(".quoteBox").hide();
-
 }
 
+//form event listener
 
+const searchForm = document.getElementById('searchForm');
 
-$(function() {
+const searchInput = document.getElementById('searchInput');
 
-  simpson.init();
-  
-  $('form').on("submit", function(e){
-      $(".quoteBox").show();
-      e.preventDefault();
-      simpson.querySearch();
-      });
+searchForm.addEventListener('submit', e => {
+  e.preventDefault();
+  //get search term
+  const searchTerm = searchInput.value;
+  console.log(searchTerm);
 
-});
+  //show quotebox 
+  document.getElementById("quoteBox").classList.add('quoteBoxFX');
 
+  //clear search field
+  searchInput.value = '';
+  console.log(123);
+
+  //clear div where subtitles are shown
+  document.getElementById("subTtl").innerHTML ='';
+    //search API
+    getQuote(searchTerm);
+})
