@@ -1,19 +1,18 @@
 #quoteBox {
+    position: relative;
     display: flex;
     width: 85%;
-    // background: white;
-    // border: 1px solid black;
+    margin: 25px auto;
     border-radius: 1.25em;
     flex-wrap: wrap;
     color: black;
     justify-content: center;
     padding: 5px;
     text-shadow: none;
-    margin: 5px;
-    // box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 
 .imgContainer {
     width: 80%;
+    position: relative;
 }
 
 .subtitle {
@@ -25,6 +24,10 @@
     }
 }
 
+.info {
+    font-family: sans-serif;
+}
+
 }
 
 .quoteBoxFX {
@@ -32,5 +35,24 @@
 background: white;
 border: 1px solid black;
 box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+
+}
+
+
+@media (max-width: 480px) {
+        
+    #quoteBox {
+
+
+    .imgContainer {
+    
+    }
+
+    .subtitle {
+    
+        @include remCalc(18);
+        
+    }
+}
 
 }
